@@ -63,7 +63,7 @@ body{
 
 #canvas{
     width: 100%;
-    max-width: 1600px;
+    max-width: 1920px;
     background-color: var(--hex-cavas-background);
     padding: 20px 80px;
 }
@@ -117,7 +117,7 @@ body{
 
 .info{
     display: grid;
-    grid-template-columns: 240px auto;
+    grid-template-columns: 40% auto;
     grid-gap: 5px;
 }
 

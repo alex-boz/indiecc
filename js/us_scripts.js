@@ -60,19 +60,32 @@ function breakUpColumns(){
 }
 
 function buildEvents(){
-    let headlinerWrap, featureWrap, eventInfoWrap, imageWrap, infoWrap, dateWrap, eventWrap;
-    let headlinerWrap2, featureWrap2, eventInfoWrap2, imageWrap2, infoWrap2, dateWrap2, eventWrap2;
+    let headlinerWrap = '';
+    let featureWrap = '';
+    let eventInfoWrap = '';
+    let imageWrap = '';
+    let infoWrap = '';
+    let dateWrap = '';
+    let eventWrap = '';
+
+    let headlinerWrap2 = '';
+    let featureWrap2 = '';
+    let eventInfoWrap2 = '';
+    let imageWrap2 = '';
+    let infoWrap2 = '';
+    let dateWrap2 = '';
+    let eventWrap2 = '';
 
     for( let i=0; i < 4; i++ ){
         headlinerWrap = '<div class="headliner">' + firstCol[i]['Headliner'] + '</div>';
         headlinerWrap2 = '<div class="headliner">' + secondCol[i]['Headliner'] + '</div>';
 
-        if( firstCol[i]['Feature'] != '' ){
-            featureWrap = '<div class="feature">' + firstCol[i]['Feature'] + '</div>';
+        if( firstCol[i]['Feature'] != '' || firstCol[i]['Feature'] == undefined ){
+            featureWrap = '<div class="feature">FT. ' + firstCol[i]['Feature'] + '</div>';
         }
         
-        if( secondCol[i]['Feature'] != '' ){
-            featureWrap2 = '<div class="feature">' + secondCol[i]['Feature'] + '</div>';
+        if( secondCol[i]['Feature'] != '' || secondCol[i]['Feature'] == undefined ){
+            featureWrap2 = '<div class="feature">FT. ' + secondCol[i]['Feature'] + '</div>';
         }
 
         eventInfoWrap = '<div class="event-info">' + headlinerWrap + featureWrap + '</div>';
