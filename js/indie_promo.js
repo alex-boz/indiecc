@@ -53,6 +53,13 @@ console.log(appData);
 function buildHeader(){
     const logo = document.getElementById('logo-img');
 
+    let bg = ctx.createLinearGradient(0, 0, 200, 0);
+    bg.addColorStop(0, '#242021');
+    bg.addColorStop(1, '#242021');
+
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, 1440, 900);
+
     ctx.drawImage(logo, 670, 40, 610, 101);
 
     ctx.fillStyle = '#fff';
