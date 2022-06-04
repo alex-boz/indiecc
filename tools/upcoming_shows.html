@@ -12,18 +12,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/indie_promo.css">
+    <link rel="stylesheet" href="../css/indie_promo.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
+    <img src="../images/IndieLogo_WhiteHorizBox.png" alt="" id="logo-img" hidden>
 
-    <div id="landing-page">
-        <div class="one-col">
-            <a href="tools/upcoming_shows.html">Upcoming Shows</a>
-        </div>
+    <div class="buttons"><button id="download">Download Image</button></div>
+    
+    <div id="center-canvas">
+        <canvas id="my-canvas" width="1440" height="900" style="border: 1px solid #000; background-color: #242021;"></canvas>
     </div>
 
-    <script src="js/indie_promo.js"></script>
+    <div id="img-wrapper">
+        
+    </div>
+
+    <script src="../js/indie_promo.js"></script>
 </body>
 </html>

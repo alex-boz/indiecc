@@ -1,0 +1,98 @@
+body{
+    background-color: #000;
+}
+
+#landing-page{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.two-col{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-gap: 2%;
+}
+
+.one-col{ width: 100%; }
+
+#landing-page .two-col{ width: 80%; }
+#landing-page .one-col{ text-align: center; }
+
+#landing-page{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+}
+
+#landing-page a, #landing-page a:visited{
+    display: inline-block;
+    padding: 10px 25px;
+
+    background-color: #ddd;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+
+    border-radius: 10px;
+
+    -webkit-transition: background-color .1s ease-in-out;
+    -moz-transition: background-color .1s ease-in-out;
+    -ms-transition: background-color .1s ease-in-out;
+    -o-transition: background-color .1s ease-in-out;
+    transition: background-color .1s ease-in-out;
+}
+
+#landing-page a:hover, #landing-page a:active{
+    background-color: #fff;
+}
+
+#center-canvas{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+#my-canvas{
+    background-color: #242021;
+    width: 90%;
+}
+
+.buttons{
+    width: 100vw;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.buttons button{
+    font-family: 'Chivo', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 4px solid #CCBF2B;
+    border-radius: 10px;
+    color: #CCBF2B;
+    padding: 10px 25px;
+    cursor: pointer;
+
+    -webkit-transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    -moz-transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    -ms-transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    -o-transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    transition: background-color .1s ease-in-out, color .1s ease-in-out;
+}
+
+.buttons button:hover{
+    background-color: #CCBF2B;
+    color: #000;
+}
+
+.buttons button:active{
+    transform: translateY(5px);
+}
