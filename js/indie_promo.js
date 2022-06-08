@@ -3,7 +3,7 @@ const sheetId = '1wCVnYRoT55Y6B_1My3oSpqS_jXfXdYTgKYkD8wJpaPo';
 
 const tC = {
     sheetURL: 'https://docs.google.com/spreadsheets/d/' + sheetId + '/export?format=csv',
-    imgUri: 'https://drive.google.com/uc?id=',
+    imgUri: window.location.href.split('/')[0] + '/indiecc/images/',
     today: new Date(),
     imgWrapper: document.getElementById('img-wrapper')
 }
@@ -12,6 +12,7 @@ const tC = {
 let tV = {
     tempData: [],
     canvasEl: document.getElementById('my-canvas'),
+    counter: 0
 }
 
 let ctx = tV.canvasEl.getContext('2d');
@@ -40,10 +41,18 @@ $.ajax({
     }
 });
 
-const appData = tV.tempData;
-tV.tempData = [];
+const appData = $.map(tV.tempData, function(row){
+    const rowDate = new Date( row['Date'] );
 
-console.log(appData);
+    if( rowDate >= tC.today ){
+        if( tV.counter < 8 ){
+            tV.counter++;
+            return [ row ];
+        }
+    }
+});
+
+tV.tempData = [];
 
 /*
     -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -67,50 +76,30 @@ function buildHeader(){
     ctx.fillText("Coming Soon To", 140, 115);
 }
 
-function addImagesToPage(){
-    // $.each(appData, function(i, obj){
-    //     if( i > 0 ){
-    //         $('#img-wrapper').append('<img src="' + tC.imgUri + obj['Image'] + '" class="img-copy">');
-    //     }
-    // });
-}
-
 function addImagesToCanvas(){
-    let grd = ctx.createLinearGradient(0, 0, 200, 0);
-    
     let vertPos = 200;
-    let horPos = 80;
+    let horPos = 60;
 
-    let printBool = true;
+    for( let i = 0; i < appData.length; i++ ){
+        // console.log(appData[i]);
 
-    for( let i = 0; i < 8; i++ ){
-        if( appData[i] != undefined ){
-            grd.addColorStop(0, 'red');
-            grd.addColorStop(1, 'red');
+        let tempImg = new Image();
+        tempImg.src = tC.imgUri + appData[i]['Image'];
 
-            ctx.fillStyle = grd;
-            ctx.fillRect(horPos, vertPos, 240, 135);
+        // $('#img-wrapper').append(tempImg);
+
+        tempImg.onload = function(){
+            ctx.drawImage(tempImg, horPos, vertPos, 240, 135);
 
             vertPos += 170;
-            
+        
             if( i == 3 ){
                 vertPos = 200;
                 horPos = 750;
             }
         }
     }
-
-    // const images = document.querySelectorAll('.img-copy');
-    // let topPos = 0;
-    // let bottomPos = 0;
     
-    // images.forEach(function(el){
-    //     ctx.drawImage(el, topPos, bottomPos);
-
-    //     topPos += 10;
-    //     bottomPos += 10;
-    // });
-
     addDates();
     addHeadliner();
     addFeature();
@@ -120,7 +109,7 @@ function addDates(){
     let vertPos = 230;
     let horPos = 335;
 
-    for( let i = 0; i < 8; i++ ){
+    for( let i = 0; i < appData.length; i++ ){
         if( appData[i] != undefined ){
             ctx.fillStyle = '#CCBF2B';
             ctx.font = "30px Montserrat";
@@ -140,7 +129,7 @@ function addHeadliner(){
     let vertPos = 290;
     let horPos = 335;
 
-    for( let i = 0; i < 8; i++ ){
+    for( let i = 0; i < appData.length; i++ ){
         if( appData[i] != undefined ){
             ctx.fillStyle = '#fff';
             ctx.font = "45px Chivo";
@@ -160,7 +149,7 @@ function addFeature(){
     let vertPos = 325;
     let horPos = 335;
 
-    for( let i = 0; i < 8; i++ ){
+    for( let i = 0; i < appData.length; i++ ){
 
         if( appData[i] != undefined ){
             if( appData[i]['Feature'] != '' ){
@@ -184,7 +173,6 @@ function addFeature(){
     * Listeners
     -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 */
-// document.addEventListener('load', addImagesToCanvas, false);
 
 $('#download').on('click', function(){
     let img = tV.canvasEl.toDataURL("image/png");
@@ -204,5 +192,4 @@ $('#download').on('click', function(){
     -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 */
 buildHeader();
-addImagesToPage();
 addImagesToCanvas();
