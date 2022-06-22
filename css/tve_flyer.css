@@ -1,0 +1,64 @@
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body{
+    background-color: #222;
+}
+
+#dropdown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#center-canvas{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+#tve-canvas{
+    width: 90%;
+}
+
+.buttons{
+    width: 100vw;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.buttons button{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 4px solid #CCBF2B;
+    border-radius: 10px;
+    color: #CCBF2B;
+    padding: 10px 25px;
+    cursor: pointer;
+
+    -webkit-transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    -moz-transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    -ms-transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    -o-transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    transition: background-color .1s ease-in-out, color .1s ease-in-out;
+}
+
+.buttons button:hover{
+    background-color: #CCBF2B;
+    color: #000;
+}
+
+.buttons button:active{
+    transform: translateY(5px);
+}
